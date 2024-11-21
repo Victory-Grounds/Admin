@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Admin Panel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            position: fixed;
+            background-color: #2c3e50;
+            padding-top: 20px;
+            transition: transform 0.3s ease;
+            transform: translateX(-240px);
+        }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            display: block;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #34495e;
+        }
+
+        .sidebar .close-btn {
+            font-size: 30px;
+            color: white;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 240px;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .main-content .toggle-btn {
+            font-size: 30px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .settings-form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .settings-form h2 {
+            margin-bottom: 20px;
+        }
+
+        .settings-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .settings-form input,
+        .settings-form select,
+        .settings-form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .settings-form input[type="submit"] {
+            background-color: #27ae60;
+            color: white;
+            cursor: pointer;
+        }
+
+        .settings-form input[type="submit"]:hover {
+            background-color: #2ecc71;
+        }
+
+        /* Footer */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #ecf0f1;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 10px;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <span class="close-btn" onclick="toggleSidebar()">×</span>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="manage-matches.html">Manage Matches</a>
+        <a href="manage-users.html">Manage Users</a>
+        <a href="manage-payments.html">Manage Payments</a>
+        <a href="match-history.html">Match History</a>
+        <a href="settings.html">Settings</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <span class="toggle-btn" onclick="toggleSidebar()">☰</span>
+
+        <h1>Settings</h1>
+
+        <!-- Settings Form -->
+        <div class="settings-form">
+            <h2>Account Settings</h2>
+            <form>
+                <label for="admin-name">Admin Name</label>
+                <input type="text" id="admin-name" placeholder="Enter Admin Name">
+
+                <label for="admin-email">Admin Email</label>
+                <input type="email" id="admin-email" placeholder="Enter Admin Email">
+
+                <label for="password">New Password</label>
+                <input type="password" id="password" placeholder="Enter New Password">
+
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="Confirm New Password">
+
+                <label for="site-title">Site Title</label>
+                <input type="text" id="site-title" placeholder="Enter Site Title">
+
+                <label for="currency">Currency</label>
+                <select id="currency">
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                </select>
+
+                <input type="submit" value="Save Changes">
+            </form>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="footer">
+            <span>&copy; 2024 Victory Grounds</span>
+            <div>
+                <button>Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle Sidebar
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        }
+    </script>
+
+</body>
+</html>

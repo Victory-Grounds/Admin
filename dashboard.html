@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            position: fixed;
+            background-color: #2c3e50;
+            padding-top: 20px;
+            transition: transform 0.3s ease;
+            transform: translateX(-240px);
+        }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            display: block;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #34495e;
+        }
+
+        .sidebar .close-btn {
+            font-size: 30px;
+            color: white;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 240px;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .main-content .toggle-btn {
+            font-size: 30px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-title {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-cards {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 30%;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: white;
+            background-color: #2980b9;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .card a:hover {
+            background-color: #3498db;
+        }
+
+        /* Footer */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #ecf0f1;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 10px;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .dashboard-cards {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .card {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <span class="close-btn" onclick="toggleSidebar()">×</span>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="manage-users.html">Manage Users</a>
+        <a href="manage-payments.html">Manage Payments</a>
+        <a href="manage-matches.html">Manage Matches</a>
+        <a href="match-history.html">Match History</a>
+        <a href="settings.html">Settings</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <span class="toggle-btn" onclick="toggleSidebar()">☰</span>
+
+        <h1 class="dashboard-title">Admin Dashboard</h1>
+
+        <div class="dashboard-cards">
+            <!-- Manage Users Card -->
+            <div class="card">
+                <h3>Manage Users</h3>
+                <p>View, edit, or remove users</p>
+                <a href="manage-users.html">Go to Users</a>
+            </div>
+
+            <!-- Manage Payments Card -->
+            <div class="card">
+                <h3>Manage Payments</h3>
+                <p>View and manage payment records</p>
+                <a href="manage-payments.html">Go to Payments</a>
+            </div>
+
+            <!-- Manage Matches Card -->
+            <div class="card">
+                <h3>Manage Matches</h3>
+                <p>Schedule and manage ongoing matches</p>
+                <a href="manage-matches.html">Go to Matches</a>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="footer">
+            <span>&copy; 2024 Victory Grounds</span>
+            <div>
+                <button>Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle Sidebar
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        }
+    </script>
+
+</body>
+</html>

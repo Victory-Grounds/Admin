@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match History - Admin Panel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            position: fixed;
+            background-color: #2c3e50;
+            padding-top: 20px;
+            transition: transform 0.3s ease;
+            transform: translateX(-240px);
+        }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            display: block;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #34495e;
+        }
+
+        .sidebar .close-btn {
+            font-size: 30px;
+            color: white;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 240px;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .main-content .toggle-btn {
+            font-size: 30px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .match-history-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .match-history-table th, .match-history-table td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        .match-history-table th {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .match-history-table tr:nth-child(even) {
+            background-color: #ecf0f1;
+        }
+
+        .match-history-table tr:hover {
+            background-color: #bdc3c7;
+        }
+
+        /* Footer */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #ecf0f1;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 10px;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .match-history-table th, .match-history-table td {
+                font-size: 14px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <span class="close-btn" onclick="toggleSidebar()">×</span>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="manage-matches.html">Manage Matches</a>
+        <a href="manage-users.html">Manage Users</a>
+        <a href="manage-payments.html">Manage Payments</a>
+        <a href="match-history.html">Match History</a>
+        <a href="settings.html">Settings</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <span class="toggle-btn" onclick="toggleSidebar()">☰</span>
+
+        <h1>Match History</h1>
+
+        <table class="match-history-table">
+            <thead>
+                <tr>
+                    <th>Match ID</th>
+                    <th>Date</th>
+                    <th>Teams</th>
+                    <th>Status</th>
+                    <th>Winner</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#1001</td>
+                    <td>2024-11-18</td>
+                    <td>Team A vs Team B</td>
+                    <td>Completed</td>
+                    <td>Team A</td>
+                </tr>
+                <tr>
+                    <td>#1002</td>
+                    <td>2024-11-17</td>
+                    <td>Team C vs Team D</td>
+                    <td>Completed</td>
+                    <td>Team D</td>
+                </tr>
+                <tr>
+                    <td>#1003</td>
+                    <td>2024-11-16</td>
+                    <td>Team E vs Team F</td>
+                    <td>Ongoing</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Footer Section -->
+        <div class="footer">
+            <span>&copy; 2024 Victory Grounds</span>
+            <div>
+                <button>Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle Sidebar
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        }
+    </script>
+
+</body>
+</html>
